@@ -1,0 +1,98 @@
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Light Bulb On/Off With Sound</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <script>
+
+    var isLightOn = true; // Initial state, light is on
+
+    function toggleLightBulb() {
+        var background = document.querySelector('.background');
+        var lamp = document.querySelector('.lamp');
+        var lampBody = document.querySelector('.lamp-body');
+        var lampBendLeft = document.querySelector('.lamp-body-bend-left');
+        var lampBendRight = document.querySelector('.lamp-body-bend-right');
+
+        if (isLightOn) {
+            background.style.setProperty('--background', '#09121a');
+            lamp.style.setProperty('--lamp', '#4b5c9c');
+            lampBody.style.setProperty('--lamp', '#4b5c9c');
+            lampBendLeft.style.setProperty('--background', '#09121a');
+            lampBendRight.style.setProperty('--background', '#09121a');
+            isLightOn = false;
+        } else {
+            background.style.setProperty('--background', '#e76f51');
+            lamp.style.setProperty('--lamp', '#e9c46a');
+            lampBody.style.setProperty('--lamp', '#e9c46a');
+            lampBendLeft.style.setProperty('--background', '#e76f51');
+            lampBendRight.style.setProperty('--background', '#e76f51');
+            isLightOn = true;
+        }
+    }
+
+    function LightBulbOn() {
+        var background = document.querySelector('.background');
+        var lamp = document.querySelector('.lamp');
+        var lampBody = document.querySelector('.lamp-body');
+        var lampBendLeft = document.querySelector('.lamp-body-bend-left');
+        var lampBendRight = document.querySelector('.lamp-body-bend-right');
+
+        background.style.setProperty('--background', '#e76f51');
+        lamp.style.setProperty('--lamp', '#e9c46a');
+        lampBody.style.setProperty('--lamp', '#e9c46a');
+        lampBendLeft.style.setProperty('--background', '#e76f51');
+        lampBendRight.style.setProperty('--background', '#e76f51');
+        isLightOn = true;
+    }
+
+    function LightBulbOff() {
+        var background = document.querySelector('.background');
+        var lamp = document.querySelector('.lamp');
+        var lampBody = document.querySelector('.lamp-body');
+        var lampBendLeft = document.querySelector('.lamp-body-bend-left');
+        var lampBendRight = document.querySelector('.lamp-body-bend-right');
+
+        background.style.setProperty('--background', '#09121a');
+        lamp.style.setProperty('--lamp', '#4b5c9c');
+        lampBody.style.setProperty('--lamp', '#4b5c9c');
+        lampBendLeft.style.setProperty('--background', '#09121a');
+        lampBendRight.style.setProperty('--background', '#09121a');
+        isLightOn = false;
+    }
+
+    function updateLightState() {
+        fetch('light')
+        .then(response => response.text())
+        .then(text => {
+            console.log("State: " + text);
+            if (text.includes("1")) {
+                LightBulbOn();
+            }
+            if (text.includes("0")) {
+                LightBulbOff();
+            }
+        }
+        )
+    }
+
+    setInterval(updateLightState, 1000);
+
+    </script>
+
+    <body>
+        <div class="background"></div>
+        <div class="lamp" onclick="toggleLightBulb()">
+            <div class="lamp-reflection lamp-reflection-1"></div>
+            <div class="lamp-body">
+                <div class="lamp-body-bend-left"></div>
+                <div class="lamp-body-bend-right"></div>
+            </div>
+            <div class="lamb-nozzle"></div>
+        </div>
+
+    </body>
+</html>
