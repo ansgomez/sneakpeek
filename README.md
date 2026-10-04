@@ -1,7 +1,6 @@
 # SneakPeek2023
 
-This repo holds the code for the SneakPeek day 2023 (TODO: one sentence on the event,
-e.g. host institute at TU Braunschweig and audience).
+This repo holds the code for the demos shown at the SneakPeek day 2023.
 
 Small, self-contained demos with Espruino devices (Puck.js / Bangle.js) and a
 Raspberry Pi:
@@ -13,4 +12,6 @@ Raspberry Pi:
   - `IR_Send.js` - replay recorded IR "on"/"off" codes
 - `lamp-demo/` - Raspberry Pi demo: `ir_decode.py` decodes IR remote codes on a GPIO pin; `lamp.html`/`style.css` is a light bulb on/off web page.
 
-TODO: how `lamp.html` and `ir_decode.py` are wired together and how to start the demo.
+## License
+
+MIT License, Copyright (c) 2023 Andres Gomez. See [LICENSE](LICENSE).
